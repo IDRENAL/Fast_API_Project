@@ -1,13 +1,14 @@
-from http.client import HTTPException
-
+from fastapi import HTTPException
 from fastapi.params import Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
 from typing import Generator
+
 from app.database import SessionLocal
 from app.models import User
 from app.repository import users as users_repository
-security = HTTPBearer
+
+security = HTTPBearer()
 
 
 def get_db() -> Generator[Session, None, None]:
